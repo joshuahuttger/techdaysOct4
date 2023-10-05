@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index page</title>
-</head>
+<html>
 <body>
-The hostname of the container is <b>{{ hostname }}</b> and its IP is <b>{{ ip }}</b>.
+
+<button onclick="callInfiniteLoop()">InfiniteLoop</button>
+
+<p id="count">No Data for scaling count</p>
+
+<script>
+function callInfiniteLoop() {
+  const infiniteLoopEndpoint = 'http://localhost:8081/'
+  console.log("Calling infinite loop api "+infiniteLoopEndpoint)
+  calculateCount();
+  const xhttpr = new XMLHttpRequest();
+  xhttpr.open('GET', infiniteLoopEndpoint, true);
+  xhttpr.send();
+  console.log("Infinite loop request sent");
+};
+
+function calculateCount() {
+  document.getElementById("count").innerHTML = "I don't know what api to use for scaling count";
+};
+</script>
+
 </body>
 </html>

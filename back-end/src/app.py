@@ -1,16 +1,17 @@
 from flask import Flask,render_template
-import socket
+import sys
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route("/")
+@cross_origin()
 def index():
-    try:
-        host_name = socket.gethostname()
-        host_ip = socket.gethostbyname(host_name)
-        return render_template('index.html', hostname=host_name, ip=host_ip)
-    except:
-        return render_template('error.html')
+    print("Entering Infinite Loop", file=sys.stderr)
+    while True:
+        pass
+    print("*******Exiting Infinite Loop********", file=sys.stderr)
 
 
 if __name__ == "__main__":
